@@ -1,7 +1,7 @@
 <template>
   <div class="register bg-gray-200 dark:bg-black">
     <div class="flex justify-center items-center h-full">
-      <div class="flex max-w-4xl">
+      <div class="flex max-w-4xl mt-20">
         <div class="bg-white w-full lg:w-1/2 p-8">
           <h1 class="text-gray-700 text-3xl text-center">Sign Up</h1>
           <div class="my-3">
@@ -25,10 +25,10 @@
               class="border-rounded w-full py-2 px-4 outline-none focus:shadow-outline"
             />
           </div>
-          <div class="my-3 flex justify-between sm:flex-col lg:flex-row">
+          <!-- <div class="my-3 flex justify-between sm:flex-col lg:flex-row">
             <label for=""><input type="checkbox" />Remember Me</label>
             <a href="#" class="text-blue-400">Forgot Email or Password?</a>
-          </div>
+          </div> -->
           <div class="my-3 flex justify-center items-center">
             <button
               class="rounded-full bg-blue-600 border-blue-600 px-8 py-2 text-white w-1/2"

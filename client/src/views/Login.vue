@@ -1,7 +1,7 @@
 <template>
   <div class="login bg-gray-200 dark:bg-black">
     <div class="flex justify-center items-center h-full">
-      <div class="flex max-w-4xl">
+      <div class="flex max-w-4xl mt-20">
         <div class="bg-white p-8 w-full lg:w-1/2">
             <h1 class="text-gray-700 text-3xl text-center">Login</h1>
             <div class="my-3">
