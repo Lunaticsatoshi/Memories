@@ -1,7 +1,8 @@
 import {AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, LOGOUT_USER } from "../types";
-import {api, setAuthorization, removeAuthorization} from "../api";
-import {setToken, getToken, removeToken} from "../helpers";
+import {setAuthorization, removeAuthorization} from "../api";
+import { setToken, getToken, removeToken} from "../helpers";
 import router from "../../router";
+import axios from "axios";
 
 const state = {
     token: getToken(),
@@ -17,13 +18,16 @@ const actions = {
     async login({commit}, user){
         commit(AUTH_REQUEST);
         try {
-            let res = api.post("/login", user)
+            const {email, password} = user;
+            console.log(email);
+            let res = await axios.post('http://localhost:5000/api/v1/login', {email, password})
             if(res.data.success){
                 const token = res.data.accessToken
                 setToken(token);
                 setAuthorization(token);
                 commit(AUTH_SUCCESS, token)
             }
+            return res;
 
         } catch (error) {
             commit(AUTH_ERROR, error)
@@ -47,7 +51,7 @@ const mutations = {
         state.status = 'Success'
     },
     [AUTH_ERROR](state, error){
-        state.error = error.response.data.error
+        state.error = error.res.data.error
     },
     [LOGOUT_USER](state){
         state.error = null

@@ -50,6 +50,7 @@
 <script>
 import { mapActions } from "vuex";
 export default {
+  name: "Login",
   data() {
     return {
       email: "",
@@ -65,7 +66,8 @@ export default {
           email: this.email,
           password: this.password,
         };
-        let res = this.login(user);
+        let res = await this.login(user);
+        console.log(res);
         if (res.data.success) {
           this.$router.push("/home");
         }
