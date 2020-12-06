@@ -24,7 +24,7 @@ export const loginUser = async (req, res) => {
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
           expiresIn: 24 * 3 * 60 * 60,
         }); //Add changes in production
-        return res.status(201).json({ accessToken: accessToken });
+        return res.status(201).json({ success: true, accessToken: accessToken });
       } else {
         return res.status(401).json({ error: "Invalid Email or Password!!" });
       }

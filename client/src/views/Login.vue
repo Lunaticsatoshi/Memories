@@ -5,10 +5,10 @@
         <div class="bg-white p-8 w-full lg:w-1/2">
             <h1 class="text-gray-700 text-3xl text-center">Login</h1>
             <div class="my-3">
-                <input type="email" placeholder="Email" class="border-rounded w-full py-2 px-4 outline-none focus:shadow-outline" />
+                <input type="email" placeholder="Email" v-model="email" class="border-rounded w-full py-2 px-4 outline-none focus:shadow-outline" />
             </div>
             <div class="my-3">
-                <input type="password" placeholder="Password" class="border-rounded w-full py-2 px-4 outline-none focus:shadow-outline" />
+                <input type="password" placeholder="Password" v-model="password" class="border-rounded w-full py-2 px-4 outline-none focus:shadow-outline" />
             </div>
             <div class="my-3 flex justify-between sm:flex-col lg:flex-row">
                 <label for=""><input type="checkbox" />Remember Me</label>
@@ -27,7 +27,15 @@
 </template>
 
 <script>
-export default {};
+import {mapActions} from "vuex";
+export default {
+  data(){
+    return{
+      email: "",
+      password: ""
+    };
+  },
+};
 </script>
 
 <style>
