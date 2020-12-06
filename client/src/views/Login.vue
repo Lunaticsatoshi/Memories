@@ -60,18 +60,18 @@ export default {
     ...mapActions(["login"]),
     async loginUser() {
       console.log(this.email, this.password, "login User");
-      // try {
-      //   let user = {
-      //     email: this.email,
-      //     password: this.password,
-      //   };
-      //   let res = this.login(user);
-      //   if (res.data.success) {
-      //     this.$router.push("/home");
-      //   }
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      try {
+        let user = {
+          email: this.email,
+          password: this.password,
+        };
+        let res = this.login(user);
+        if (res.data.success) {
+          this.$router.push("/home");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
