@@ -48,6 +48,7 @@ const actions = {
                 commit(REGISTER_SUCCESS);
                 // router.push('/login');
             }
+            return res;
         } catch (error) {
             commit(REGISTER_ERROR, error)
         }
