@@ -61,7 +61,7 @@ export const registerUser = async (req, res) => {
       const savedUser = await newUser.save(); //change in production
       return res
         .status(201)
-        .json({ message: "User sucessfully created!!", user: savedUser });
+        .json({ message: "User sucessfully created!!", success: true });
     }
   } catch (err) {
     return res.status(500).json({ err: err });
