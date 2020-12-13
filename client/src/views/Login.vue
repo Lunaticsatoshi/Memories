@@ -69,7 +69,7 @@ export default {
         let res = await this.login(user);
         console.log(res);
         if (res.data.success) {
-          this.$router.push("/home");
+          this.$router.push("/");
         }
       } catch (error) {
         console.log(error);
