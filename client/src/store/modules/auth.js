@@ -1,4 +1,4 @@
-import {AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, LOGOUT_USER } from "../types";
+import {AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, LOGOUT_USER, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_ERROR } from "../types";
 import {setAuthorization, removeAuthorization} from "../api";
 import { setToken, getToken, removeToken} from "../helpers";
 import router from "../../router";
@@ -19,7 +19,6 @@ const actions = {
         commit(AUTH_REQUEST);
         try {
             const {email, password} = user;
-            console.log(email);
             let res = await axios.post('http://localhost:5000/api/v1/login', {email, password})
             if(res.data.success){
                 const token = res.data.accessToken
@@ -38,6 +37,20 @@ const actions = {
         commit(LOGOUT_USER);
         removeAuthorization();
         router.push('/login');
+    },
+
+    async registerRuntimeCompiler({commit}, user){
+        commit(REGISTER_REQUEST);
+        try {
+            const {username, email, password } = user;
+            let res = await axios.post('http://localhost:5000/api/v1/register', {username, email, password})
+            if(res.data.success){
+                commit(REGISTER_SUCCESS);
+                router.push('/login');
+            }
+        } catch (error) {
+            commit(REGISTER_ERROR, error)
+        }
     }
 }
 const mutations = {
@@ -51,6 +64,17 @@ const mutations = {
         state.status = 'Success'
     },
     [AUTH_ERROR](state, error){
+        state.error = error.res.data.error
+    },
+    [REGISTER_REQUEST](state){
+        state.error = null,
+        state.state = 'Loading'
+    },
+    [REGISTER_SUCCESS](state){
+        state.error = null,
+        state.state = 'Success'
+    },
+    [REGISTER_ERROR](state, error){
         state.error = error.res.data.error
     },
     [LOGOUT_USER](state){

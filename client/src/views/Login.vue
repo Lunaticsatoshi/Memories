@@ -67,7 +67,7 @@ export default {
           password: this.password,
         };
         let res = await this.login(user);
-        console.log(res);
+        // console.log(res);
         if (res.data.success) {
           this.$router.push("/");
         }
