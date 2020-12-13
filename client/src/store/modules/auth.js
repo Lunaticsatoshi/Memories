@@ -39,14 +39,14 @@ const actions = {
         router.push('/login');
     },
 
-    async registerRuntimeCompiler({commit}, user){
+    async register({commit}, user){
         commit(REGISTER_REQUEST);
         try {
-            const {username, email, password } = user;
-            let res = await axios.post('http://localhost:5000/api/v1/register', {username, email, password})
+            const {userName, email, password } = user;
+            let res = await axios.post('http://localhost:5000/api/v1/register', {userName, email, password})
             if(res.data.success){
                 commit(REGISTER_SUCCESS);
-                router.push('/login');
+                // router.push('/login');
             }
         } catch (error) {
             commit(REGISTER_ERROR, error)

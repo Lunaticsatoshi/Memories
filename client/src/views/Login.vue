@@ -29,7 +29,6 @@
               <input
                 type="submit"
                 value="Login"
-                @submit="loginUser"
                 class="rounded-full bg-blue-600 border-blue-600 px-8 py-2 text-white w-1/2"
               />
             </div>
