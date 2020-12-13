@@ -7,7 +7,8 @@
       <div>
           <ul class="flex items-center">
               <li class="p-2 mx-4 dark:text-white"><router-link to="/">Home</router-link></li>
-              <li class="p-2 mx-4"><a href="/register" class="rounded-full bg-purple-600 border-purple-600 px-6 py-2 text-white">Register</a></li>
+              <li class="p-2 mx-4"><a href="/register" v-if="!isLoggedIn" class="rounded-full bg-purple-600 border-purple-600 px-6 py-2 text-white">Register</a></li>
+              <li class="p-2 mx-4"><a href="/register" v-if="isLoggedIn" class="rounded-full bg-purple-600 border-purple-600 px-6 py-2 text-white">Register</a></li>
           </ul>
       </div>
     </div>
@@ -15,7 +16,13 @@
 </template>
 
 <script>
-export default {};
+import {mapGetters} from 'vuex'
+export default {
+  name: "Navbar",
+  computed: {
+    ...mapGetters["isLoggedIn"]
+  }
+};
 </script>
 
 <style>

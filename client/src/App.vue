@@ -1,7 +1,9 @@
 <template>
-  <div class="font-body bg-gray-200">
+  <div class="font-body bg-gray-200 dark:bg-black">
     <Navbar />
-    <router-view />
+    <div class="mt-16">
+      <router-view />
+    </div>
   </div>
 </template>
 
